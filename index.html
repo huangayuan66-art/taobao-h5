@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>红包特惠</title>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <style>
+        body { margin: 0; background: #eb2f3e; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
+        .card { width: 90%; background: white; border-radius: 15px; margin-top: 50px; padding: 20px; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .price { font-size: 50px; color: #eb2f3e; font-weight: bold; }
+        
+        /* 按钮与动画容器 */
+        .btn-container { position: relative; width: 100%; margin-top: 30px; }
+        .btn { width: 90%; height: 55px; background: linear-gradient(#ffeb3b, #fbc02d); border: none; border-radius: 30px; font-size: 20px; font-weight: bold; color: #824f00; cursor: pointer; box-shadow: 0 5px 0 #d4a017; }
+        
+        /* 手指动画 */
+        .finger {
+            position: absolute; width: 40px; right: 10%; bottom: -10px;
+            animation: moveFinger 0.6s infinite alternate;
+            pointer-events: none; /* 防止遮挡按钮点击 */
+        }
+        @keyframes moveFinger {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-10px, -10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div style="color: #666;">最高可领</div>
+        <div class="price">¥20.00</div>
+        <div style="background:#fdf1f2; padding:10px; border:1px dashed #eb2f3e; margin:10px 0;">￥KXgsUXYKtgN￥/ HU7405</div>
+        <div class="btn-container">
+            <button class="btn" id="copyBtn" data-clipboard-text="￥KXgsUXYKtgN￥/ HU7405">立即领券购买</button>
+            <div class="finger">👆</div>
+        </div>
+    </div>
+    <script>
+        var clipboard = new ClipboardJS('#copyBtn');
+        clipboard.on('success', function() {
+            alert('复制成功！请打开淘宝领取');
+            window.location.href = "taobao://";
+        });
+    </script>
+</body>
+</html>
